@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ASCIIMathML Live Test</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript" src="./ASCIIMathML.js"></script>
+  <style type="text/css">
+  #menu,
+  #title,
+  #subtitle,
+  #author,
+  .display {
+    text-align: center;
+  }
+
+  body {
+    font-family: Arial;
+    margin: 10%;
+  }
+
+  p,
+  table {
+    font-family: Times;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+
+  img {
+    border: 0;
+  }
+
+  textarea {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #out {
+    border: 1px solid #ccc;
+    padding: 100px;
+  }
+  </style>
+  <script type="text/javascript">
+  function updatemath() {
+    const str = document.getElementById('mathin').value;
+    const outnode = document.getElementById('out');
+    outnode.innerHTML = str;
+    asciimath.AMprocesssNode(outnode);
+  }
+  </script>
+</head>
+
+<body>
+  <h1 id="title">Type your equation (see <a href="http://asciimath.org">http://asciimath.org</a>) </h1>
+  <textarea oninput="updatemath()" id="mathin" rows="16">`(-b+-sqrt(b^2-4ac))/(2a)`</textarea>
+  <div id="out">`(-b+-sqrt(b^2-4ac))/(2a)`</div>
+</body>
+
+</html>
