@@ -211,35 +211,43 @@
   <script>
   'use strict';
 
-  (function() {
-    let input = document.getElementById('input');
-    let output = document.getElementById('output');
-    let optionsForm = document.getElementById('options');
-    let turndownService = new window.TurndownService(options());
+  const optionsForm = document.getElementById('options');
+
+  function options(optionsForm) {
+    let opts = {};
+    let inputs = optionsForm.getElementsByTagName('select');
+
+    for (let i = 0; i < inputs.length; i++) {
+      let input = inputs[i];
+      opts[input.name] = input.value;
+    }
+  }
+
+  const turndownService = new window.TurndownService(options(optionsForm));
+  const output = document.getElementById('output');
+
+  function update() {
+    output.value = turndownService.turndown(input.value);
+    output.select();
+  }
+
+  function configInput() {
+    const input = document.getElementById('input');
 
     input.addEventListener('input', update);
 
-    optionsForm.addEventListener('change', function() {
-      turndownService = new window.TurndownService(options());
-      update();
-    });
+    input.onfocus = () => {
+      input.select();
+    };
 
+    input.select();
+  }
+
+  configInput();
+
+  optionsForm.addEventListener('change', function() {
     update();
-
-    function update() {
-      output.value = turndownService.turndown(input.value);
-    }
-
-    function options() {
-      let opts = {};
-      let inputs = optionsForm.getElementsByTagName('select');
-      for (let i = 0; i < inputs.length; i++) {
-        let input = inputs[i];
-        opts[input.name] = input.value;
-      }
-      return opts;
-    }
-  })();
+  });
   </script>
 </body>
 
