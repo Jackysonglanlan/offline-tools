@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sliderland</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="favicon.svg" />
+        <script src="ffmpeg.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+        <meta
+            name="description"
+            content="A minimalist creative coding playground, using only HTML sliders. Make animations using math!"
+        />
+
+        <meta property="og:title" content="Sliderland" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sliderland.blinry.org" />
+        <meta
+            property="og:image"
+            content="https://sliderland.blinry.org/twitter-card.png"
+        />
+        <meta
+            property="og:description"
+            content="A minimalist creative coding playground, using only HTML sliders. Make animations using math!"
+        />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@blinry" />
+        <meta name="twitter:title" content="Sliderland" />
+        <meta
+            name="twitter:description"
+            content="A minimalist creative coding playground, using only HTML sliders. Make animations using math!"
+        />
+        <meta
+            name="twitter:image"
+            content="https://sliderland.blinry.org/twitter-card.png?4"
+        />
+    </head>
+    <body>
+        <div id="everything">
+            <div id="code">
+                <div id="comment"></div>
+                <div id="txi">
+                    (<abbr title="time in seconds">t</abbr>,<abbr
+                        title="position of the slider (0..1)"
+                        >x</abbr
+                    >,<abbr title="index of the slider (0..63)">i</abbr>) =>
+                </div>
+                <textarea id="formula" spellcheck="false"></textarea>
+            </div>
+            <div id="slider-container">
+                <span id="examples-left">❮</span>
+                <span id="examples-right">❯</span>
+                <canvas id="sliders" width="2000" height="2000"></canvas>
+                <!-- in case you're wondering, i use a canvas instead of HTML sliders
+                     for consistent display across browsers -->
+            </div>
+            <div id="credits">
+                <a href="https://github.com/blinry/sliderland" target="_blank"
+                    >source code</a
+                >
+                -
+                <a
+                    href="https://www.youtube.com/watch?v=bUTPlQzfz1k"
+                    target="_blank"
+                    >music video</a
+                >
+                -
+                <a
+                    href="https://twitter.com/blinry/status/1525083424339509249"
+                    target="_blank"
+                    >twitter</a
+                >
+                -
+                <a
+                    href="https://chaos.social/@blinry/108294523362583242"
+                    target="_blank"
+                    >mastodon</a
+                >
+                -
+                <a href="https://patreon.com/blinry" target="_blank">patreon</a>
+                -
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSc9w3OwbHQQ8fsKVeNngIoE-vctuiZJC1PhsZJiC4OFZ3AXlw/viewform"
+                    target="_blank"
+                    >feedback!</a
+                >
+                <span id="recordspan"
+                    >-
+                    <a id="record">record</a>
+                </span>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

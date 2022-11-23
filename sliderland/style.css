@@ -1,0 +1,124 @@
+@font-face {
+    font-family: "Iosevka";
+    src: url("iosevka-regular.ttf") format("truetype");
+    font-display: swap;
+}
+html {
+    font-size: min(calc(100vw / 42), calc(100vh / 50));
+    height: 100%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+    font-family: "Iosevka", monospace;
+    font-size: 80%;
+    height: 100%;
+}
+#sliders {
+    width: 32rem;
+    height: 32rem;
+    transform: scale(calc(2110 / 2000));
+    position: relative;
+}
+#slider-container {
+    width: 32rem;
+    height: 32rem;
+    position: relative;
+}
+#formula:focus {
+    outline: none;
+}
+textarea {
+    font-family: "Iosevka", monospace;
+    font-size: 100%;
+    width: 32rem;
+    height: 2rem;
+    min-height: 2rem;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+
+    border: none;
+    /*border: solid 0.5px #b2b2b2;*/
+
+    background: #efefef;
+    //color: white;
+    border-radius: 0.3rem;
+
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+
+    transition: background 0.1s;
+}
+#comment {
+    margin-bottom: 0.2rem;
+}
+#txi,
+#comment {
+    cursor: default;
+}
+#code {
+    width: 32rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+#formula:hover {
+    background: #e5e5e5;
+}
+.error {
+    background: #efcece !important;
+}
+#examples-left,
+#examples-right {
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 14.5rem;
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    transition-property: right, left;
+    transition-duration: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#examples-left {
+    left: -3rem;
+}
+#examples-left:hover {
+    left: -3.5rem;
+}
+#examples-right {
+    right: -3.5rem;
+    background: #0075ff;
+    color: white;
+    border-radius: 0.3rem;
+}
+#examples-right:hover {
+    right: -4rem;
+    background: #0065ef;
+}
+#credits {
+    margin-top: 1rem;
+}
+a {
+    color: black;
+}
+#record {
+    background: #e5e5e5;
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.3rem;
+    cursor: pointer;
+}
+#record:hover {
+    background: #c7381c;
+    color: white;
+}

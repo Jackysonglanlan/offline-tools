@@ -1,7 +1,5 @@
 # Turndown
 
-[![Build Status](https://travis-ci.org/domchristie/turndown.svg?branch=master)](https://travis-ci.org/domchristie/turndown)
-
 Convert HTML into Markdown with JavaScript.
 
 ### to-markdown has been renamed to Turndown. See the [migration guide](https://github.com/domchristie/to-markdown/wiki/Migrating-from-to-markdown-to-Turndown) for details.
@@ -26,41 +24,41 @@ For usage with RequireJS, UMD versions are located in `lib/turndown.umd.js` (for
 
 ```js
 // For Node.js
-var TurndownService = require('turndown')
+var TurndownService = require('turndown');
 
-var turndownService = new TurndownService()
-var markdown = turndownService.turndown('<h1>Hello world!</h1>')
+var turndownService = new TurndownService();
+var markdown = turndownService.turndown('<h1>Hello world!</h1>');
 ```
 
-Turndown also accepts DOM nodes as input (either element nodes, document nodes,  or document fragment nodes):
+Turndown also accepts DOM nodes as input (either element nodes, document nodes, or document fragment nodes):
 
 ```js
-var markdown = turndownService.turndown(document.getElementById('content'))
+var markdown = turndownService.turndown(document.getElementById('content'));
 ```
 
 ## Options
 
 Options can be passed in to the constructor on instantiation.
 
-| Option                | Valid values  | Default |
-| :-------------------- | :------------ | :------ |
-| `headingStyle`        | `setext` or `atx` | `setext`  |
-| `hr`                  | Any [Thematic break](http://spec.commonmark.org/0.27/#thematic-breaks) | `* * *` |
-| `bulletListMarker`    | `-`, `+`, or `*` | `*` |
-| `codeBlockStyle`      | `indented` or `fenced` | `indented` |
-| `fence`               | ` ``` ` or `~~~` | ` ``` ` |
-| `emDelimiter`         | `_` or `*` | `_` |
-| `strongDelimiter`     | `**` or `__` | `**` |
-| `linkStyle`           | `inlined` or `referenced` | `inlined` |
-| `linkReferenceStyle`  | `full`, `collapsed`, or `shortcut` | `full` |
+| Option               | Valid values                                                           | Default    |
+| :------------------- | :--------------------------------------------------------------------- | :--------- |
+| `headingStyle`       | `setext` or `atx`                                                      | `setext`   |
+| `hr`                 | Any [Thematic break](http://spec.commonmark.org/0.27/#thematic-breaks) | `* * *`    |
+| `bulletListMarker`   | `-`, `+`, or `*`                                                       | `*`        |
+| `codeBlockStyle`     | `indented` or `fenced`                                                 | `indented` |
+| `fence`              | ` ``` ` or `~~~`                                                       | ` ``` `    |
+| `emDelimiter`        | `_` or `*`                                                             | `_`        |
+| `strongDelimiter`    | `**` or `__`                                                           | `**`       |
+| `linkStyle`          | `inlined` or `referenced`                                              | `inlined`  |
+| `linkReferenceStyle` | `full`, `collapsed`, or `shortcut`                                     | `full`     |
 
 ### Advanced Options
 
-| Option                | Valid values  | Default |
-| :-------------------- | :------------ | :------ |
-| `blankReplacement`    | rule replacement function | See **Special Rules** below |
-| `keepReplacement`     | rule replacement function | See **Special Rules** below |
-| `defaultReplacement`  | rule replacement function | See **Special Rules** below |
+| Option               | Valid values              | Default                     |
+| :------------------- | :------------------------ | :-------------------------- |
+| `blankReplacement`   | rule replacement function | See **Special Rules** below |
+| `keepReplacement`    | rule replacement function | See **Special Rules** below |
+| `defaultReplacement` | rule replacement function | See **Special Rules** below |
 
 ## Methods
 
@@ -72,9 +70,9 @@ The `key` parameter is a unique name for the rule for easy reference. Example:
 turndownService.addRule('strikethrough', {
   filter: ['del', 's', 'strike'],
   replacement: function (content) {
-    return '~' + content + '~'
-  }
-})
+    return '~' + content + '~';
+  },
+});
 ```
 
 `addRule` returns the `TurndownService` instance for chaining.
@@ -86,8 +84,8 @@ See **Extending with Rules** below.
 Determines which elements are to be kept and rendered as HTML. By default, Turndown does not keep any elements. The filter parameter works like a rule filter (see section on filters belows). Example:
 
 ```js
-turndownService.keep(['del', 'ins'])
-turndownService.turndown('<p>Hello <del>world</del><ins>World</ins></p>') // 'Hello <del>world</del><ins>World</ins>'
+turndownService.keep(['del', 'ins']);
+turndownService.turndown('<p>Hello <del>world</del><ins>World</ins></p>'); // 'Hello <del>world</del><ins>World</ins>'
 ```
 
 This will render `<del>` and `<ins>` elements as HTML when converted.
@@ -101,13 +99,13 @@ This will render `<del>` and `<ins>` elements as HTML when converted.
 Determines which elements are to be removed altogether i.e. converted to an empty string. By default, Turndown does not remove any elements. The filter parameter works like a rule filter (see section on filters belows). Example:
 
 ```js
-turndownService.remove('del')
-turndownService.turndown('<p>Hello <del>world</del><ins>World</ins></p>') // 'Hello World'
+turndownService.remove('del');
+turndownService.turndown('<p>Hello <del>world</del><ins>World</ins></p>'); // 'Hello World'
 ```
 
 This will remove `<del>` elements (and contents).
 
-`remove` can be called multiple times, with the newly added remove filters taking precedence over older ones. Remove filters will be overridden by the keep filters,  standard CommonMark rules, and any added rules. To remove elements that are normally handled by those rules, add a rule with the desired behaviour.
+`remove` can be called multiple times, with the newly added remove filters taking precedence over older ones. Remove filters will be overridden by the keep filters, standard CommonMark rules, and any added rules. To remove elements that are normally handled by those rules, add a rule with the desired behaviour.
 
 `remove` returns the `TurndownService` instance for chaining.
 
@@ -117,16 +115,16 @@ Use a plugin, or an array of plugins. Example:
 
 ```js
 // Import plugins from turndown-plugin-gfm
-var turndownPluginGfm = require('turndown-plugin-gfm')
-var gfm = turndownPluginGfm.gfm
-var tables = turndownPluginGfm.tables
-var strikethrough = turndownPluginGfm.strikethrough
+var turndownPluginGfm = require('turndown-plugin-gfm');
+var gfm = turndownPluginGfm.gfm;
+var tables = turndownPluginGfm.tables;
+var strikethrough = turndownPluginGfm.strikethrough;
 
 // Use the gfm plugin
-turndownService.use(gfm)
+turndownService.use(gfm);
 
 // Use the table and strikethrough plugins only
-turndownService.use([tables, strikethrough])
+turndownService.use([tables, strikethrough]);
 ```
 
 `use` returns the `TurndownService` instance for chaining.
@@ -152,8 +150,8 @@ The filter selects `<p>` elements, and the replacement function returns the `<p>
 
 The filter property determines whether or not an element should be replaced with the rule's `replacement`. DOM nodes can be selected simply using a tag name or an array of tag names:
 
- * `filter: 'p'` will select `<p>` elements
- * `filter: ['em', 'i']` will select `<em>` or `<i>` elements
+- `filter: 'p'` will select `<p>` elements
+- `filter: ['em', 'i']` will select `<em>` or `<i>` elements
 
 Alternatively, the filter can be a function that returns a boolean depending on whether a given node should be replaced. The function is passed a DOM node as well as the `TurndownService` options. For example, the following rule selects `<a>` elements (with an `href`) when the `linkStyle` option is `inlined`:
 
@@ -178,9 +176,9 @@ rules.emphasis = {
   filter: ['em', 'i'],
 
   replacement: function (content, node, options) {
-    return options.emDelimiter + content + options.emDelimiter
-  }
-}
+    return options.emDelimiter + content + options.emDelimiter;
+  },
+};
 ```
 
 ### Special Rules
@@ -191,7 +189,7 @@ rules.emphasis = {
 
 **Remove rules** determine which elements to remove altogether. By default, no elements are removed.
 
-**Default rule** handles nodes which are not recognised by any other rule. By default, it outputs the node's text content (separated  by blank lines if it is a block-level element). Its behaviour can be customised with the `defaultReplacement` option.
+**Default rule** handles nodes which are not recognised by any other rule. By default, it outputs the node's text content (separated by blank lines if it is a block-level element). Its behaviour can be customised with the `defaultReplacement` option.
 
 ### Rule Precedence
 
